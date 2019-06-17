@@ -7,6 +7,6 @@
 
 ```bash
 $ git clone https://github.com/after-school-study-group/js-study.git
-$ cd html-css-study
+$ cd js-study
 $ gitbook serve
 ```
