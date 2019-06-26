@@ -1,6 +1,14 @@
 # 変数とリテラル
 varは使うな, let・const, スコープ
 
+# データ型
+
+# 演算子
+
+# 型変換
+
+# コメント
+
 # 配列とオブジェクト
 配列, オブジェクト, オブジェクトのコピー(shallow copy, deep copy)
 
@@ -12,6 +20,3 @@ if, for, for in, for of, while(オマケ), forEach, break, continue, return
 
 # クラス
 クラス構文
-
-# 非同期通信
-githubから情報を取得するサンプル, xhr(古い), fetch, JSONとXML
