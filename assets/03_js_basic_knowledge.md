@@ -20,6 +20,3 @@ if, for, for in, for of, while(オマケ), forEach, break, continue, return
 
 # クラス
 クラス構文
-
-# HTTP通信
-githubから情報を取得するサンプル, xhr(古い), fetch, JSONとXML
