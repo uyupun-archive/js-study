@@ -1,9 +1,22 @@
-// TODO: JSとはなにか, ECMAScript, Node.js, AltJS
-
 # JavaScriptとは
+JavaScriptはWebブラウザをはじめとした環境で動作する言語で, サーバサイドとのデータのやり取りや画面への描画, アニメーションなどに使われている.
+
+JavaScriptは,
+
+- プロトタイプベースのオブジェクト指向言語
+- インタプリタ型言語
+- 動的型付け言語
+
+といった特徴を持つ.
+
+// TODO: それぞれの特徴の解説
 
 # JavaScriptの歴史
-LiveScript, JScript, ブラウザ互換, ActionScript(Flush), ECMAScript(標準化)
+NCSA Mosaic
+Netscape Navigator 2.0 -> LiveScript
+IE 3 -> JScript
+Flash -> ActionScript
+ECMAScript
 
 # 仕様策定のプロセス
 
@@ -18,7 +31,7 @@ Node.jsはサーバサイドをはじめとした環境で動作するJavaScript
 - ノンブロッキングI/O 非同期I/O?
 などの特徴を持ち, サーバサイドを記述するためのフレームワークとしてExpressも用意されている.
 
-// TODO: RequireJS, AMD, ServerJS
+// TODO: RequireJS, AMD, ServerJS, V8
 
 # altJS
 **altJS**とは, alternative JavaScriptの略称で, JavaScriptの代替言語の総称である.  
@@ -39,8 +52,23 @@ altJSには以下のような種類がある(抜粋).
 
 その他にも**Haxe**や**PureScript**など様々なaltJSが存在する.
 
-# ライブラリ
-prototype.js(滅びた), jQuery(滅びた), moment.js, lodash
+# Ajax
+2000年代後半, GoogleがJavaScriptのAjax技術を使ったGoogle Mapsを発表し, これにより再びJavaScriptが見直され始める.
+Ajaxは画面を遷移することなくデータをやり取りし, 描画する技術群のことを指し, UI/UX的に見てかなり良いものとされている.
+また, Ajaxは XMLHttpRequest (ほんまか？Fetch APIは？) を中核とした技術群で, これはマイクロソフト社がActiveX (なにこれ) を実装し始めたのがはじまりだった.
+当初は, Ajaxでやりとりするデータ構造にXMLが用いられることが多かったが, 現在ではJSONを使ってやり取りされることが多くなっている.
+これらの技術については, 第n章 非同期通信 にて詳しく解説する.
 
-# フレームワーク
-Backbone(滅びた), Angular, Vue, Nuxt, React
+// JSONについて
+
+# ライブラリ
+初期のJavaScriptはフォームの内容の加工やアニメーションを付けたりするような小規模なものにしか使われなかったが, Ajaxの登場によりJavaScriptの需要は高まり, だんだんと大規模化していった.  
+2005年にprototype.js, 2010年にjQueryが登場し, 両者ともに人気を博した.  
+jQueryの使用頻度も年々減ってはいるが, 未だに使われることがある.
+また, jQueryはセレクタによる要素の絞り込みができる機能を備えており, それが便利だということでJavaScriptにも`querySelector`, `querySelectorAll`として実装されるなど, JavaScript自体にも影響を与えている.  
+また, ユーティリティライブラリのlodashや日付ライブラリのmoment.jsなど, JavaScriptの標準関数の弱点を補うようなライブラリも多数公開されている.
+
+# Webフレームワーク
+JavaScriptが見直され, ライブラリが興隆したが, ライブラリだけでは大規模化・複雑化に耐えうるような堅牢なシステムの構築が困難になった.  
+そこでWebサービスの雛形ごと提供するWebフレームワークが登場した.
+Backbone.jsやAngularJSからはじまり, 現在ではVue.js, React, Angularといった３つのWebフレームワークがよく使われている.
