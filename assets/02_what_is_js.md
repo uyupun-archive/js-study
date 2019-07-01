@@ -7,8 +7,18 @@ LiveScript, JScript, ブラウザ互換, ActionScript(Flush), ECMAScript(標準�
 
 # 仕様策定のプロセス
 
-# サーバサイドのJS
-Node.js, RequireJS, AMD
+# Node.js
+それまでJavaScriptはwebブラウザ上で動作するプログラミング言語であったが, 2009年のNode.jsの誕生によって状況は大きく変化した.  
+Node.jsはサーバサイドをはじめとした環境で動作するJavaScriptで, CommonJSという仕様の実装である.  
+サーバサイドのJavaScriptとしてはじまったNode.jsだが, 現在はNode.js製のクライアント用のライブラリが多く作られている.  
+これらのライブラリはnpm(Node Package Manager)と呼ばれるパッケージ管理システム上で公開され(誰でも公開できる), CUI上からnpmコマンドを使ってインストールすることができる.
+
+また, Node.jsは
+- V8エンジンで動作する
+- ノンブロッキングI/O 非同期I/O?
+などの特徴を持ち, サーバサイドを記述するためのフレームワークとしてExpressも用意されている.
+
+// TODO: RequireJS, AMD, ServerJS
 
 # altJS
 **altJS**とは, alternative JavaScriptの略称で, JavaScriptの代替言語の総称である.  
