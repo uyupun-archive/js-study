@@ -52,6 +52,20 @@ const addBook = (book) => {
       "author": linkedAuthors
     };
     books.push(bookList);
-    console.log(books);
+    showBookList();
   });
+};
+
+const showBookList = () => {
+  bookList.innerHTML = "";
+  if (books.length === 0) return;
+  for (let [index, book] of books.entries()) {
+    bookList.innerHTML += `<hr>` +
+      `<ul>` +
+      `<li>${book.title}</li>` +
+      `<li>${book.author}</li>` +
+      `<li><button type="button" id="delete${index}">削除</button></li>` +
+      `</ul>`;
+  }
+  bookList.innerHTML += `<hr>`
 };
