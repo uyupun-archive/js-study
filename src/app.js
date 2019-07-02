@@ -7,7 +7,6 @@ document.getElementById("search").addEventListener("click", () => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
     if(response.ok) {
       response.json().then(book => {
-        console.log(book);
         showBook(book);
         addBook(book.items[0].volumeInfo);
       })
@@ -67,5 +66,14 @@ const showBookList = () => {
       `<li><button type="button" id="delete${index}">削除</button></li>` +
       `</ul>`;
   }
-  bookList.innerHTML += `<hr>`
+  bookList.innerHTML += `<hr>`;
+  for (let [index, book] of books.entries()) {
+    document.getElementById(`delete${index}`).addEventListener("click", deleteBook);
+  }
+};
+
+const deleteBook = (element) => {
+  let index = element.target.id.replace("delete", "");
+  books.splice(index, 1);
+  showBookList();
 };
