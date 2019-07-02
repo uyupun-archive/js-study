@@ -9,6 +9,7 @@ document.getElementById("search").addEventListener("click", () => {
       response.json().then(book => {
         console.log(book);
         showBook(book);
+        addBook(book.items[0].volumeInfo);
       })
     }
     else {
@@ -35,4 +36,22 @@ const showBook = (book) => {
       `<p id="description">${(bookDetail.description !== undefined ? bookDetail.description : "")}</p>` +
       `<button type="button" id="addBook">追加</button>`
   }
+};
+
+const addBook = (book) => {
+  document.getElementById("addBook").addEventListener("click", () => {
+    for (let item of books) {
+      if (book.title === item.title) return;
+    }
+    let linkedAuthors = "";
+    for (let author of book.authors) {
+      linkedAuthors += author + " ";
+    }
+    const bookList = {
+      "title": book.title,
+      "author": linkedAuthors
+    };
+    books.push(bookList);
+    console.log(books);
+  });
 };
