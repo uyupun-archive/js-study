@@ -3,6 +3,7 @@ const result = document.getElementById("result");
 const bookList = document.getElementById("bookList");
 let books = [];
 
+// 本の検索
 document.getElementById("search").addEventListener("click", () => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
     if(response.ok) {
@@ -19,6 +20,7 @@ document.getElementById("search").addEventListener("click", () => {
   });
 });
 
+// 検索結果の表示
 const showBook = (book) => {
   if (book.totalItems === 0) {
     result.innerText = "本が見つかりませんでした。";
@@ -37,6 +39,7 @@ const showBook = (book) => {
   }
 };
 
+// 本の追加
 const addBook = (book) => {
   document.getElementById("addBook").addEventListener("click", () => {
     for (let item of books) {
@@ -55,6 +58,7 @@ const addBook = (book) => {
   });
 };
 
+// 追加した本の表示
 const showBookList = () => {
   bookList.innerHTML = "";
   if (books.length === 0) return;
@@ -72,6 +76,7 @@ const showBookList = () => {
   }
 };
 
+// 本の削除
 const deleteBook = (element) => {
   let index = element.target.id.replace("delete", "");
   books.splice(index, 1);
