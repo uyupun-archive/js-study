@@ -21,7 +21,7 @@ document.getElementById("search").addEventListener("click", () => {
 });
 
 // 検索結果の表示
-const showBook = (book) => {
+const showBook = book => {
   if (book.totalItems === 0) {
     result.innerText = "本が見つかりませんでした。";
   }
@@ -40,7 +40,7 @@ const showBook = (book) => {
 };
 
 // 本の追加
-const addBook = (book) => {
+const addBook = book => {
   document.getElementById("addBook").addEventListener("click", () => {
     for (let item of books) {
       if (book.title === item.title) return;
@@ -77,7 +77,7 @@ const showBookList = () => {
 };
 
 // 本の削除
-const deleteBook = (element) => {
+const deleteBook = element => {
   let index = element.target.id.replace("delete", "");
   books.splice(index, 1);
   showBookList();
