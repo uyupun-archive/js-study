@@ -6,37 +6,40 @@ const searchBook = () => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
     if(response.ok) {
       response.json().then(book => {
-        showSearchResult(book.items[0].volumeInfo);
+        if ("items" in book) showSuccessResult(book.items[0].volumeInfo);
+        showErrorResult("該当する書籍が見つかりませんでした。");
       });
     } else {
-      console.error("Server Error!")
+      showErrorResult("サーバーエラーです。");
     }
   }).catch(error => {
-    console.error("Network Error!")
+    showErrorResult("ネットワークエラーです。");
   });
 };
 
 // 検索結果の表示
-const showSearchResult = book => {
+const showSuccessResult = book => {
   let result = document.getElementById("result");
   result.textContent = null;
 
-  if (book.totalItems === 0) {
-    result.appendChild(document.createElement("p")).appendChild(document.createTextNode("本が見つかりませんでした。"));
-  } else {
-    const title = book.title;
-    const authors = book.authors.join(", ");
-    const description = "description" in book ? book.description : "";
+  const title = book.title;
+  const authors = book.authors.join(", ");
+  const description = "description" in book ? book.description : "";
+  const button = makeButton("add-book", "追加");
 
-    result.appendChild(document.createElement("h2")).appendChild(document.createTextNode(title));
-    result.appendChild(document.createElement("div")).appendChild(document.createTextNode(`著者: ${authors}`));
-    result.appendChild(document.createElement("div")).appendChild(document.createTextNode(description));
+  result.appendChild(document.createElement("h2")).appendChild(document.createTextNode(title));
+  result.appendChild(document.createElement("div")).appendChild(document.createTextNode(`著者: ${authors}`));
+  result.appendChild(document.createElement("div")).appendChild(document.createTextNode(description));
+  result.appendChild(button);
 
-    const button = makeButton("add-book", "追加");
-    result.appendChild(button);
+  document.getElementById("add-book").addEventListener("click", () => addBook(book));
+};
 
-    document.getElementById("add-book").addEventListener("click", () => addBook(book));
-  }
+// エラーメッセージの表示
+const showErrorResult = text => {
+  let result = document.getElementById("result");
+  result.textContent = null;
+  result.appendChild(document.createElement("p")).appendChild(document.createTextNode(text));
 };
 
 // 本棚の表示
@@ -55,13 +58,13 @@ const showBookshelf = () => {
   }
 };
 
-// 本の追加
+// 書籍の追加
 const addBook = book => {
   books.push({ title: book.title, authors: book.authors.join(", ") });
   showBookshelf();
 };
 
-// 本の削除
+// 書籍の削除
 const deleteBook = i => {
   books.splice(i + 1, 1);
   showBookshelf();
