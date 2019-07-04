@@ -30,9 +30,9 @@ const showBook = book => {
   main.appendChild(result);
   // 検索結果がない場合の処理
   if (book.totalItems === 0) {
-    const p = getElement("p");
+    const p = document.createElement("p");
     appendText(p, "本が見つかりませんでした。");
-    appendChildToParent(result, p);
+    result.appendChild(p);
   }
   // 検索結果がある場合の処理
   else {
@@ -43,13 +43,13 @@ const showBook = book => {
     const texts = [`${bookDetail.title}`, `${linkedAuthors}`, `${description}`, "追加"];
     let element = null;
     for (let [index, tag] of tagList.entries()) {
-      element = getElement(tag);
+      element = document.createElement(tag);
       appendText(element, texts[index]);
       if (tag === "button") {
         element.setAttribute("type", "button");
         element.setAttribute("id", "addBook");
       }
-      appendChildToParent(result, element);
+      result.appendChild(element);
     }
     document.getElementById("addBook").addEventListener("click", () => {
       addBook(book.items[0].volumeInfo)
@@ -109,18 +109,8 @@ const createAuthors = authors => {
   return linkedAuthors;
 };
 
-// 要素を作成する
-const getElement = element => {
-  return document.createElement(element);
-};
-
 // 要素にテキストを追加する
 const appendText = (element, text) => {
   const textNode = document.createTextNode(text);
   element.appendChild(textNode);
-};
-
-// 親要素に子要素を追加する
-const appendChildToParent = (parent, child) => {
-  parent.appendChild(child);
 };
