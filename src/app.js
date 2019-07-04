@@ -66,7 +66,7 @@ const addBook = book => {
 
 // 書籍の削除
 const deleteBook = i => {
-  books.splice(i + 1, 1);
+  books.splice(i, 1);
   showBookshelf();
 };
 
