@@ -1,5 +1,4 @@
 const isbn = document.getElementById("isbn");
-const bookList = document.getElementById("bookList");
 const main = document.getElementsByTagName("main")[0];
 let books = [];
 
@@ -22,12 +21,13 @@ document.getElementById("search").addEventListener("click", () => {
 // 検索結果の表示
 const showBook = book => {
   // id="result"要素をmain要素に追加
-  if (document.getElementById("result")) {
-    document.getElementById("result").textContent = null;
+  let result = document.getElementById("result");
+  if (!result) {
+    result = document.createElement("div");
+    result.setAttribute("id", "result");
+    main.appendChild(result);
   }
-  const result = getElement("div");
-  result.setAttribute("id", "result");
-  main.appendChild(result);
+  result.textContent = null;
   // 検索結果がない場合の処理
   if (book.totalItems === 0) {
     const p = document.createElement("p");
@@ -77,25 +77,39 @@ const addBook = book => {
 
 // 追加した本の表示
 const showBookList = () => {
-  bookList.innerHTML = "";
+  // id="bookList"要素がない場合はmain要素に追加
+  let bookList = document.getElementById("bookList");
+  if (!bookList) {
+    bookList = document.createElement("div");
+    bookList.setAttribute("id", "bookList");
+    main.appendChild(bookList);
+  }
+  bookList.textContent = null;
   if (books.length === 0) return;
+  const hr = document.createElement("hr");
   for (let [index, book] of books.entries()) {
-    bookList.innerHTML += `<hr>` +
-      `<ul>` +
-      `<li>${book.title}</li>` +
-      `<li>${book.author}</li>` +
-      `<li><button type="button" id="delete${index}">削除</button></li>` +
-      `</ul>`;
+    let hr = document.createElement("hr");
+    let ul = document.createElement("ul");
+    let li = document.createElement("li");
+    bookList.appendChild(hr);
+    let deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("type", "button");
+    deleteBtn.setAttribute("id", `delete${index}`);
+    appendChildToParent("li", book.title, ul);
+    appendChildToParent("li", book.author, ul);
+    appendText(deleteBtn, "削除");
+    li.appendChild(deleteBtn);
+    ul.appendChild(li);
+    bookList.appendChild(ul);
+    document.getElementById(`delete${index}`).addEventListener("click", () => {
+      deleteBook(index);
+    });
   }
-  bookList.innerHTML += `<hr>`;
-  for (let [index, book] of books.entries()) {
-    document.getElementById(`delete${index}`).addEventListener("click", deleteBook);
-  }
+  bookList.appendChild(hr);
 };
 
 // 本の削除
-const deleteBook = element => {
-  let index = element.target.id.replace("delete", "");
+const deleteBook = index => {
   books.splice(index, 1);
   showBookList();
 };
@@ -113,4 +127,11 @@ const createAuthors = authors => {
 const appendText = (element, text) => {
   const textNode = document.createTextNode(text);
   element.appendChild(textNode);
+};
+
+// 新しく作成した要素にテキストを追加し、それを親要素に追加する
+const appendChildToParent = (tag, text, parent) => {
+  const child = document.createElement(tag);
+  appendText(child, text);
+  parent.appendChild(child);
 };
