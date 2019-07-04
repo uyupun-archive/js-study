@@ -139,7 +139,7 @@ JavaScriptは動的型付け言語であるため, 静的型付け言語のよ�
 - 配列
 - 正規表現
 
-これらのリテラルについて, 詳しく知りたい方は, [JavaScript Primer](https://jsprimer.net/basic/data-type/)を参考にするとよい.
+これらのリテラルについて, 詳しく知りたい方は, [JavaScript Primer 第一部 データ型とリテラル](https://jsprimer.net/basic/data-type/)を参考にするとよい.
 
 # 演算子
 演算子はよく利用する演算処理を記号などで表現したものである.  
@@ -149,6 +149,41 @@ JavaScriptは動的型付け言語であるため, 静的型付け言語のよ�
 // どの演算子の例を載せるか
 
 # 型変換
+型変換には, 明示的な型変換と暗黙的な型変換がある.  
+例えば, 厳密等価演算子(===)ではなく, 等価演算子(==)を使用して値を比較すると, 暗黙的な型変換が行われる.
+以下のコードでは, 暗黙的な型変換によって結果は `true` になる.
+
+```js
+console.log(1 == "1");
+```
+
+このように, 暗黒的な型変換は意図しない結果となるため, 型変換をする場合, 明示的な型変換を行う.  
+以下のコードでは, Booleanコンストラクタ関数を使用し, 任意の値を真偽値に変換している.
+
+```js
+Boolean("string"); // true
+Boolean(1); // true
+Boolean({}); // true
+Boolean(0); // false
+Boolean(""); // false
+Boolean(null); // false
+```
+
+どの値が `true` でどの値が `false` になるかは以下のルールによって決められる.
+
+- falsyな値はfalseになる
+- falsyでない値はtrueになる
+
+falsyな値とは次の6種類の値のことをいう.
+
+- false
+- undefined
+- null
+- 0
+- NaN
+- ""
+
+型変換について詳しく調べたい方は, [JavaScript Primer 第一部 暗黙的な型変換](https://jsprimer.net/basic/implicit-coercion/)を参考にするとよい.
 
 # コメント
 
