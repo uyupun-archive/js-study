@@ -6,8 +6,8 @@ const searchBook = () => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
     if(response.ok) {
       response.json().then(book => {
-        if ("items" in book) showSuccessResult(book.items[0].volumeInfo);
-        showErrorResult("該当する書籍が見つかりませんでした。");
+        if ("items" in book)  showSuccessResult(book.items[0].volumeInfo);
+        else                  showErrorResult("該当する書籍が見つかりませんでした。");
       });
     } else {
       showErrorResult("サーバーエラーです。");
