@@ -50,9 +50,9 @@ const showBookshelf = () => {
     const li = document.createElement("li");
     const button = makeButton(`delete-book-${i}`, "削除");
 
-    const tmp = bookshelf.appendChild(li);
-    tmp.appendChild(document.createTextNode(`${book.title}: ${book.authors}`));
-    tmp.appendChild(button);
+    bookshelf.appendChild(li);
+    li.appendChild(document.createTextNode(`${book.title}: ${book.authors}`));
+    li.appendChild(button);
 
     document.getElementById(`delete-book-${i}`).addEventListener("click", () => deleteBook(i));
   }
