@@ -1,6 +1,6 @@
 const isbn = document.getElementById("isbn");
-const result = document.getElementById("result");
 const bookList = document.getElementById("bookList");
+const main = document.getElementsByTagName("main")[0];
 let books = [];
 
 // 本の検索
@@ -9,7 +9,6 @@ document.getElementById("search").addEventListener("click", () => {
     if(response.ok) {
       response.json().then(book => {
         showBook(book);
-        addBook(book.items[0].volumeInfo);
       })
     }
     else {
@@ -22,40 +21,58 @@ document.getElementById("search").addEventListener("click", () => {
 
 // 検索結果の表示
 const showBook = book => {
-  if (book.totalItems === 0) {
-    result.innerText = "本が見つかりませんでした。";
+  // id="result"要素をmain要素に追加
+  if (document.getElementById("result")) {
+    document.getElementById("result").textContent = null;
   }
+  const result = getElement("div");
+  result.setAttribute("id", "result");
+  main.appendChild(result);
+  // 検索結果がない場合の処理
+  if (book.totalItems === 0) {
+    const p = getElement("p");
+    appendText(p, "本が見つかりませんでした。");
+    appendChildToParent(result, p);
+  }
+  // 検索結果がある場合の処理
   else {
     const bookDetail = book.items[0].volumeInfo;
-    let authors = book.items[0].volumeInfo.authors;
-    let linkedAuthors = "";
-    for (let author of authors) {
-      linkedAuthors += author + " ";
+    const linkedAuthors = createAuthors(bookDetail.authors);
+    const tagList = ["h2", "div", "div", "button"];
+    const description = bookDetail.description !== undefined ? bookDetail.description : "";
+    const texts = [`${bookDetail.title}`, `${linkedAuthors}`, `${description}`, "追加"];
+    let element = null;
+    for (let [index, tag] of tagList.entries()) {
+      element = getElement(tag);
+      appendText(element, texts[index]);
+      if (tag === "button") {
+        element.setAttribute("type", "button");
+        element.setAttribute("id", "addBook");
+      }
+      appendChildToParent(result, element);
     }
-    result.innerHTML = `<h2 id="title">${bookDetail.title}</h2>` +
-      `<p id="author">${linkedAuthors}</p>` +
-      `<p id="description">${(bookDetail.description !== undefined ? bookDetail.description : "")}</p>` +
-      `<button type="button" id="addBook">追加</button>`
+    document.getElementById("addBook").addEventListener("click", () => {
+      addBook(book.items[0].volumeInfo)
+    });
   }
 };
 
 // 本の追加
 const addBook = book => {
-  document.getElementById("addBook").addEventListener("click", () => {
-    for (let item of books) {
-      if (book.title === item.title) return;
-    }
-    let linkedAuthors = "";
-    for (let author of book.authors) {
-      linkedAuthors += author + " ";
-    }
-    const bookList = {
-      "title": book.title,
-      "author": linkedAuthors
-    };
-    books.push(bookList);
-    showBookList();
-  });
+  console.log(book);
+  for (let item of books) {
+    if (book.title === item.title) return;
+  }
+  let linkedAuthors = "";
+  for (let author of book.authors) {
+    linkedAuthors += author + " ";
+  }
+  const bookList = {
+    "title": book.title,
+    "author": linkedAuthors
+  };
+  books.push(bookList);
+  showBookList();
 };
 
 // 追加した本の表示
@@ -81,4 +98,29 @@ const deleteBook = element => {
   let index = element.target.id.replace("delete", "");
   books.splice(index, 1);
   showBookList();
+};
+
+// 著者を一列表記で返す
+const createAuthors = authors => {
+  let linkedAuthors = "";
+  for (let author of authors) {
+    linkedAuthors += author + " ";
+  }
+  return linkedAuthors;
+};
+
+// 要素を作成する
+const getElement = element => {
+  return document.createElement(element);
+};
+
+// 要素にテキストを追加する
+const appendText = (element, text) => {
+  const textNode = document.createTextNode(text);
+  element.appendChild(textNode);
+};
+
+// 親要素に子要素を追加する
+const appendChildToParent = (parent, child) => {
+  parent.appendChild(child);
 };
