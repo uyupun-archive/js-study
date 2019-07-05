@@ -107,6 +107,10 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`).then(respons
 HTTP通信にはエラーがつきものである.  
 `catch`メソッドを使用し, エラーをハンドリングする.
 
+Consoleを見ると以下の画像の様に, 書籍のデータが返ってくる.
+
+<img src="../img/04_js_practice/002.png">
+
 # 書籍管理アプリを作成する
 
 ## 書籍の検索
