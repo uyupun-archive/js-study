@@ -107,6 +107,44 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`).then(respons
 HTTP通信にはエラーがつきものである.  
 `catch`メソッドを使用し, エラーをハンドリングする.
 
+# 書籍管理アプリを作成する
+
+## 書籍の検索
+まず, 書籍を検索する機能を作成する.  
+先ほどのFetch APIを使用する.  
+
+```js
+const books = [];
+
+// 書籍の検索
+const searchBook = () => {
+  const isbn = document.getElementById("isbn");
+  if (isbn.value.length === 0) {
+    console.log("入力してください。");
+    return;
+  }
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
+    if(response.ok) {
+      response.json().then(book => {
+        if ("items" in book)  console.log(book.items[0].volumeInfo);
+        else                  console.log("該当する書籍が見つかりませんでした。");
+      });
+    } else {
+      console.log("サーバーエラーです。");
+    }
+  }).catch(error => {
+    console.log("ネットワークエラーです。");
+  });
+};
+
+document.getElementById("search").addEventListener("click", searchBook);
+```
+
+前項でFetch APIの説明をしたのでここでは省略する.  
+`addEventListener`メソッドは, 特定のイベントが対象に配信されるたびに呼び出される関数を定義する.  
+イベントには`click`や`keydown`, `scroll`など複数の種類がある.  
+今回は検索ボタンをクリックした際に, イベント(`searchBook`)が発火する.
+
 # 進化させよう
 
 今回は簡単な書籍管理アプリを作ってきたが、このアプリには足りていない機能が多くある.  
