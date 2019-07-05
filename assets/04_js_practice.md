@@ -148,7 +148,7 @@ document.getElementById("search").addEventListener("click", searchBook);
 
 ## 検索結果の表示
 次に, 検索結果を表示する.  
-検索結果を表示するために, 前項の書籍の検索で記述したsearchBookメソッドを修正する.  
+検索結果を表示するために, 前項(書籍の検索)で記述したsearchBookメソッドを修正する.  
 また, 書籍を本棚に追加するための追加ボタンを作成するためのメソッドも作成する.
 
 ```js
@@ -191,8 +191,6 @@ const showSuccessResult = book => {
   result.appendChild(document.createElement("div")).appendChild(document.createTextNode(`著者: ${authors}`));
   result.appendChild(document.createElement("div")).appendChild(document.createTextNode(description));
   result.appendChild(button);
-
-  document.getElementById("add-book").addEventListener("click", () => addBook(book));
 };
 
 // エラーメッセージの表示
@@ -213,12 +211,16 @@ const makeButton = (id, text) => {
 ```
 
 書籍が見つかった際は`showSuccessResult`メソッドを, 見つからなかった, エラー時は`showErrorResult`メソッドを使用する.  
-`join`メソッドは, 配列の全要素を順に連結した文字列を新たに作成し, それを返す.  
-引数には要素の区切り方を指定できる.  
-`appendChild`メソッドは, 特定の親要素に引数で指定した子要素を追加する.  
-`createElement`メソッドは, 引数に指定した要素を作成する.  
-`createTextNode`メソッドは, `Text`ノードを作成する.  
-`setAttribute`メソッドは, 特定の要素に属性とその値を追加する.
+以下に使用しているメソッドを紹介する.
+
+|メソッド名|説明|
+|:--|:--|
+|join|配列の全要素を順に連結した文字列を新たに作成し, それを返す.<br>引数には要素の区切り方を指定できる.|
+|appendChild|特定の親要素に引数で指定した子要素を追加する.|
+|createElement|引数に指定した要素を作成する.|
+|createTextNode|`Text`ノードを作成する.|
+|setAttribute|特定の要素に属性とその値を追加する.|
+|textContent|特定の要素のテキストおよびその子孫のテキストの内容を表す.|
 
 ```js
 result.appendChild(document.createElement("h2")).appendChild(document.createTextNode(title));
@@ -229,6 +231,67 @@ result.appendChild(document.createElement("h2")).appendChild(document.createText
 
 1. `result`へh2要素を追加する.
 2. 追加したh2要素にテキスト(今回の場合, 書籍のタイトル)を追加する.
+
+## 本棚の表示
+最後に検索結果を本棚に追加し, 表示する.  
+前項(検索結果の表示)で作成した追加ボタンに`addEventListener`メソッドを使用し, クリックイベントを追加する.  
+また, 本棚の書籍を削除する機能も作成する.
+
+```js
+...
+// 検索結果の表示
+const showSuccessResult = book => {
+  ...
+  result.appendChild(document.createElement("h2")).appendChild(document.createTextNode(title));
+  result.appendChild(document.createElement("div")).appendChild(document.createTextNode(`著者: ${authors}`));
+  result.appendChild(document.createElement("div")).appendChild(document.createTextNode(description));
+  result.appendChild(button);
+  
+  document.getElementById("add-book").addEventListener("click", () => addBook(book));
+};
+
+...
+
+// ボタンの作成
+const makeButton = (id, text) => {
+  ...
+};
+
+// 本棚の表示
+const showBookshelf = () => {
+  const bookshelf = document.getElementById("bookshelf");
+  bookshelf.textContent = null;
+  for (let [i, book] of books.entries()) {
+    const li = document.createElement("li");
+    const button = makeButton(`delete-book-${i}`, "削除");
+
+    bookshelf.appendChild(li);
+    li.appendChild(document.createTextNode(`${book.title}: ${book.authors}`));
+    li.appendChild(button);
+
+    document.getElementById(`delete-book-${i}`).addEventListener("click", () => deleteBook(i));
+  }
+};
+
+// 書籍の追加
+const addBook = book => {
+  books.push({ title: book.title, authors: book.authors.join(", ") });
+  showBookshelf();
+};
+
+// 書籍の削除
+const deleteBook = i => {
+  books.splice(i, 1);
+  showBookshelf();
+};
+```
+
+|メソッド名|説明|
+|:--|:--|
+|push|配列の末尾に1つ以上の要素を追加する.|
+|splice|古い要素を取り除きつつ新しい要素を追加することで, 配列の内容を変更する.|
+
+これで書籍管理アプリが完成した.
 
 # 進化させよう
 
