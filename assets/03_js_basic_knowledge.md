@@ -271,12 +271,116 @@ const obj = {
 配列, オブジェクト, オブジェクトのコピー(shallow copy, deep copy)
 
 # 制御構文
+## 条件分岐
+if文やswitch文を使用することで, 条件分岐を記述できる.  
+条件分岐を使用することで, 特定の条件を満たすかどうかで実行する処理を変更できる.
+
+### if文
+以下のコードは, if文の基本形である.  
+条件式の評価結果が`true`であるならば, 処理が実行される.
+
+```js
+if (条件式) {
+  処理;
+}
+```
+
+次のコードは, 条件式が`true`であるため, 処理が実行される.
+
+```js
+if (true) {
+  console.log("この処理は実行される");
+}
+```
+
+また, if文内の処理が1行の場合, `{}`を省略できる.
+
+```js
+if (true)
+  console.log("この処理は実行される");
+```
+
+if文は条件式に比較演算子などを使用し, その比較結果によって処理を分岐するためによく使用される.
+
+```js
+const num = 60;
+if (num > 50) {
+  console.log("numは50より大きな値");
+}
+```
+
+複数の条件分岐を記述する場合, if文に続けてelse if文やelse文を使用する.
+
+```js
+const num = 60;
+if (num > 100) {
+  console.log("numは100より大きな値");
+}
+else if (num > 50) {
+  console.log("numは50より大きな値");
+}
+else {
+  console.log("numは50以下の値");
+}
+```
+
+### switch文
+switch文は式の評価結果が, 指定した値である場合に実行する処理を並べて記述する.  
+
+```js
+const num = 2;
+switch (num) {
+  case 1:
+    console.log("numの値は1");
+    break;
+  case 2:
+    console.log("numの値は2");
+    break;
+  case 3:
+    console.log("numの値は3");
+    break;
+  default:
+    console.log("numの値は1, 2, 3以外");
+    break;
+}
+```
+
+`default`を使用することで, 式の評価結果に関わらず, 処理が実行される.  
+上記のコードはbreak文を使用しているため, `default`内の処理は実行されない.  
+break文がない場合, switch文は最後まで式の評価結果と指定した値を比較し続ける.
+
+## 反復処理
+for文やwhile文などを使用することで反復処理を記述できる.
+
+### for
+for文は繰り返す範囲を指定した反復処理を記述できる.
+
+```js
+for (初期化式; 条件式; 増分式) {
+    処理;
+}
+```
+
+for文の実行フローは次のようになる.
+
+1. 初期化式で変数宣言
+2. 条件式の評価結果が`true`なら3へ, `false`なら終了
+3. 処理を実行
+4. 増分式で変数を更新
+5. 2へ戻る
+
+```js
+let total = 0;
+
+for (let i = 0; i < 10; i++) {
+  total += i + 1;
+}
+console.log(total); // => 55
+```
+
 if, for, for in, for of, while(オマケ), forEach, break, continue, return
 
 # 様々な関数
 即時関数(滅びた), 関数宣言, 関数式, アロー関数, this
-
-# クラス
-クラス構文
 
 # undefined, Null, NaN
