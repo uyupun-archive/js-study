@@ -112,6 +112,7 @@ HTTP通信にはエラーがつきものである.
 ## 書籍の検索
 まず, 書籍を検索する機能を作成する.  
 先ほどのFetch APIを使用する.  
+また, テキストボックスに値を入れていない場合, `入力してください。`とConsoleに表示されるようにする.
 
 ```js
 const books = [];
@@ -130,10 +131,10 @@ const searchBook = () => {
         else                  console.log("該当する書籍が見つかりませんでした。");
       });
     } else {
-      console.log("サーバーエラーです。");
+      console.error("サーバーエラーです。");
     }
   }).catch(error => {
-    console.log("ネットワークエラーです。");
+    console.error("ネットワークエラーです。");
   });
 };
 
@@ -144,6 +145,90 @@ document.getElementById("search").addEventListener("click", searchBook);
 `addEventListener`メソッドは, 特定のイベントが対象に配信されるたびに呼び出される関数を定義する.  
 イベントには`click`や`keydown`, `scroll`など複数の種類がある.  
 今回は検索ボタンをクリックした際に, イベント(`searchBook`)が発火する.
+
+## 検索結果の表示
+次に, 検索結果を表示する.  
+検索結果を表示するために, 前項の書籍の検索で記述したsearchBookメソッドを修正する.  
+また, 書籍を本棚に追加するための追加ボタンを作成するためのメソッドも作成する.
+
+```js
+...
+
+// 書籍の検索
+const searchBook = () => {
+  const isbn = document.getElementById("isbn");
+  if (isbn.value.length === 0) {
+    showErrorResult("入力してください。");
+    return;
+  }
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
+    if(response.ok) {
+      response.json().then(book => {
+        if ("items" in book)  showSuccessResult(book.items[0].volumeInfo);
+        else                  showErrorResult("該当する書籍が見つかりませんでした。");
+      });
+    } else {
+      showErrorResult("サーバーエラーです。");
+    }
+  }).catch(error => {
+    showErrorResult("ネットワークエラーです。");
+  });
+};
+
+...
+
+// 検索結果の表示
+const showSuccessResult = book => {
+  let result = document.getElementById("result");
+  result.textContent = null;
+
+  const title = book.title;
+  const authors = book.authors.join(", ");
+  const description = "description" in book ? book.description : "";
+  const button = makeButton("add-book", "追加");
+
+  result.appendChild(document.createElement("h2")).appendChild(document.createTextNode(title));
+  result.appendChild(document.createElement("div")).appendChild(document.createTextNode(`著者: ${authors}`));
+  result.appendChild(document.createElement("div")).appendChild(document.createTextNode(description));
+  result.appendChild(button);
+
+  document.getElementById("add-book").addEventListener("click", () => addBook(book));
+};
+
+// エラーメッセージの表示
+const showErrorResult = text => {
+  let result = document.getElementById("result");
+  result.textContent = null;
+  result.appendChild(document.createElement("p")).appendChild(document.createTextNode(text));
+};
+
+// ボタンの作成
+const makeButton = (id, text) => {
+  const button = document.createElement("button");
+  button.setAttribute("type", "button");
+  button.setAttribute("id", id);
+  button.appendChild(document.createTextNode(text));
+  return button;
+};
+```
+
+書籍が見つかった際は`showSuccessResult`メソッドを, 見つからなかった, エラー時は`showErrorResult`メソッドを使用する.  
+`join`メソッドは, 配列の全要素を順に連結した文字列を新たに作成し, それを返す.  
+引数には要素の区切り方を指定できる.  
+`appendChild`メソッドは, 特定の親要素に引数で指定した子要素を追加する.  
+`createElement`メソッドは, 引数に指定した要素を作成する.  
+`createTextNode`メソッドは, `Text`ノードを作成する.  
+`setAttribute`メソッドは, 特定の要素に属性とその値を追加する.
+
+```js
+result.appendChild(document.createElement("h2")).appendChild(document.createTextNode(title));
+```
+
+上記のコードはメソッドチェーンと呼ばれ, メソッドをつなげて処理する.  
+上記の処理は以下のように処理される.
+
+1. `result`へh2要素を追加する.
+2. 追加したh2要素にテキスト(今回の場合, 書籍のタイトル)を追加する.
 
 # 進化させよう
 
