@@ -216,6 +216,8 @@ const makeButton = (id, text) => {
 };
 ```
 
+前項(書籍の検索)ではsearchBookメソッド内のメッセージはコンソールに表示されるようになっていた.  
+ここではコンソールではなく, 画面に表示されるように修正している.  
 書籍が見つかった際は`showSuccessResult`メソッドを, 見つからなかった, エラー時は`showErrorResult`メソッドを使用する.  
 以下に使用しているメソッドを紹介する.
 
@@ -224,7 +226,7 @@ const makeButton = (id, text) => {
 |join|配列の全要素を順に連結した文字列を新たに作成し, それを返す.<br>引数には要素の区切り方を指定できる.|
 |appendChild|特定の親要素に引数で指定した子要素を追加する.|
 |createElement|引数に指定した要素を作成する.|
-|createTextNode|`Text`ノードを作成する.|
+|createTextNode|テキストノードを作成する.|
 |setAttribute|特定の要素に属性とその値を追加する.|
 |textContent|特定の要素のテキストおよびその子孫のテキストの内容を表す.|
 
@@ -257,11 +259,6 @@ const showSuccessResult = book => {
 };
 
 ...
-
-// ボタンの作成
-const makeButton = (id, text) => {
-  ...
-};
 
 // 本棚の表示
 const showBookshelf = () => {
