@@ -277,7 +277,12 @@
 <p>&#x6B21;&#x306B;app.js&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;.<br>&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x3092;app.js&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;.</p>
 <pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;hello, world!&quot;</span>);
 </code></pre>
-<p>&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x306E;Console&#x30BF;&#x30D6;&#x3092;&#x958B;&#x304F;.<br>&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x304C;Chrome&#x306E;&#x5834;&#x5408;, Windows&#x306F;F12&#x30AD;&#x30FC;&#x3092;&#x62BC;&#x3059;&#x3053;&#x3068;&#x3067;&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x304C;&#x958B;&#x304F;.<br>Mac&#x306F;option&#x30AD;&#x30FC;, command&#x30AD;&#x30FC;, i&#x30AD;&#x30FC;&#x3092;&#x540C;&#x6642;&#x306B;&#x62BC;&#x3059;&#x3053;&#x3068;&#x3067;&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x304C;&#x958B;&#x304F;.<br>&#x305D;&#x306E;&#x4ED6;&#x306E;&#x5834;&#x5408;, &#x53F3;&#x4E0A;&#x306E;&#x30E1;&#x30CB;&#x30E5;&#x30FC;&#x304B;&#x3089;&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C4;&#x30FC;&#x30EB;-&gt;&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x3092;&#x9078;&#x629E;&#x3059;&#x308B;.</p>
+<p>&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x306E;Console&#x30BF;&#x30D6;&#x3092;&#x958B;&#x304F;.<br>&#x4E0B;&#x8A18;&#x306B;&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x958B;&#x304D;&#x65B9;&#x3092;&#x8AAC;&#x660E;&#x3059;&#x308B;.(&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x304C;Chrome&#x306E;&#x5834;&#x5408;)</p>
+<ul>
+<li>Windows&#x306F;F12&#x30AD;&#x30FC;&#x3092;&#x62BC;&#x3059;&#x3053;&#x3068;&#x3067;&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x304C;&#x958B;&#x304F;.  </li>
+<li>Mac&#x306F;option&#x30AD;&#x30FC;, command&#x30AD;&#x30FC;, i&#x30AD;&#x30FC;&#x3092;&#x540C;&#x6642;&#x306B;&#x62BC;&#x3059;&#x3053;&#x3068;&#x3067;&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x304C;&#x958B;&#x304F;.  </li>
+<li>&#x305D;&#x306E;&#x4ED6;&#x306E;&#x5834;&#x5408;, &#x53F3;&#x4E0A;&#x306E;&#x30E1;&#x30CB;&#x30E5;&#x30FC;&#x304B;&#x3089;&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C4;&#x30FC;&#x30EB;-&gt;&#x30C7;&#x30D9;&#x30ED;&#x30C3;&#x30D1;&#x30FC;&#x30C4;&#x30FC;&#x30EB;&#x3092;&#x9078;&#x629E;&#x3059;&#x308B;.</li>
+</ul>
 <p>&#x4EE5;&#x4E0B;&#x306E;&#x753B;&#x50CF;&#x306E;&#x69D8;&#x306B;, &#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x5185;&#x306B;<code>hello, world!</code>&#x3068;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308C;&#x3070;, app.js&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x3066;&#x3044;&#x308B;.</p>
 <p><img src="../img/04_js_practice/001.png" width="300"></p>
 <h1 id="web-api&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;">Web API&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;</h1>
@@ -358,27 +363,27 @@ fetch(<span class="hljs-string">`https://www.googleapis.com/books/v1/volumes?q=i
 </code></pre>
 <p>&#x524D;&#x9805;&#x3067;Fetch API&#x306E;&#x8AAC;&#x660E;&#x3092;&#x3057;&#x305F;&#x306E;&#x3067;&#x3053;&#x3053;&#x3067;&#x306F;&#x7701;&#x7565;&#x3059;&#x308B;.<br><code>addEventListener</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;, &#x7279;&#x5B9A;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x5BFE;&#x8C61;&#x306B;&#x914D;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x305F;&#x3073;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;.<br>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306B;&#x306F;<code>click</code>&#x3084;<code>keydown</code>, <code>scroll</code>&#x306A;&#x3069;&#x8907;&#x6570;&#x306E;&#x7A2E;&#x985E;&#x304C;&#x3042;&#x308B;.<br>&#x4ECA;&#x56DE;&#x306F;&#x691C;&#x7D22;&#x30DC;&#x30BF;&#x30F3;&#x3092;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3057;&#x305F;&#x969B;&#x306B;, &#x30A4;&#x30D9;&#x30F3;&#x30C8;(<code>searchBook</code>)&#x304C;&#x767A;&#x706B;&#x3059;&#x308B;.</p>
 <h2 id="&#x691C;&#x7D22;&#x7D50;&#x679C;&#x306E;&#x8868;&#x793A;">&#x691C;&#x7D22;&#x7D50;&#x679C;&#x306E;&#x8868;&#x793A;</h2>
-<p>&#x6B21;&#x306B;, &#x691C;&#x7D22;&#x7D50;&#x679C;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;.<br>&#x691C;&#x7D22;&#x7D50;&#x679C;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;, &#x524D;&#x9805;(&#x66F8;&#x7C4D;&#x306E;&#x691C;&#x7D22;)&#x3067;&#x8A18;&#x8FF0;&#x3057;&#x305F;searchBook&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4FEE;&#x6B63;&#x3059;&#x308B;.<br>&#x307E;&#x305F;, &#x66F8;&#x7C4D;&#x3092;&#x672C;&#x68DA;&#x306B;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x8FFD;&#x52A0;&#x30DC;&#x30BF;&#x30F3;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3082;&#x4F5C;&#x6210;&#x3059;&#x308B;.</p>
+<p>&#x6B21;&#x306B;, &#x691C;&#x7D22;&#x7D50;&#x679C;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;.<br>&#x691C;&#x7D22;&#x7D50;&#x679C;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;, &#x524D;&#x9805;(&#x66F8;&#x7C4D;&#x306E;&#x691C;&#x7D22;)&#x3067;&#x8A18;&#x8FF0;&#x3057;&#x305F;searchBook&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4FEE;&#x6B63;&#x3059;&#x308B;.<br>&#x5909;&#x66F4;&#x7B87;&#x6240;&#x306B;&#x306F;<code>+</code>&#x3092;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x3044;&#x308B;.<br>&#x307E;&#x305F;, &#x66F8;&#x7C4D;&#x3092;&#x672C;&#x68DA;&#x306B;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x30DC;&#x30BF;&#x30F3;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3082;&#x4F5C;&#x6210;&#x3059;&#x308B;.  </p>
 <pre><code class="lang-js">...
 
 <span class="hljs-comment">// &#x66F8;&#x7C4D;&#x306E;&#x691C;&#x7D22;</span>
 <span class="hljs-keyword">const</span> searchBook = () =&gt; {
   <span class="hljs-keyword">const</span> isbn = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;isbn&quot;</span>);
   <span class="hljs-keyword">if</span> (isbn.value.length === <span class="hljs-number">0</span>) {
-    showErrorResult(<span class="hljs-string">&quot;&#x5165;&#x529B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&quot;</span>);
++   showErrorResult(<span class="hljs-string">&quot;&#x5165;&#x529B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&quot;</span>);
     <span class="hljs-keyword">return</span>;
   }
   fetch(<span class="hljs-string">`https://www.googleapis.com/books/v1/volumes?q=isbn:<span class="hljs-subst">${isbn.value}</span>`</span>).then(response =&gt; {
     <span class="hljs-keyword">if</span>(response.ok) {
       response.json().then(book =&gt; {
-        <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;items&quot;</span> <span class="hljs-keyword">in</span> book)  showSuccessResult(book.items[<span class="hljs-number">0</span>].volumeInfo);
-        <span class="hljs-keyword">else</span>                  showErrorResult(<span class="hljs-string">&quot;&#x8A72;&#x5F53;&#x3059;&#x308B;&#x66F8;&#x7C4D;&#x304C;&#x898B;&#x3064;&#x304B;&#x308A;&#x307E;&#x305B;&#x3093;&#x3067;&#x3057;&#x305F;&#x3002;&quot;</span>);
++       <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;items&quot;</span> <span class="hljs-keyword">in</span> book)  showSuccessResult(book.items[<span class="hljs-number">0</span>].volumeInfo);
++       <span class="hljs-keyword">else</span>                  showErrorResult(<span class="hljs-string">&quot;&#x8A72;&#x5F53;&#x3059;&#x308B;&#x66F8;&#x7C4D;&#x304C;&#x898B;&#x3064;&#x304B;&#x308A;&#x307E;&#x305B;&#x3093;&#x3067;&#x3057;&#x305F;&#x3002;&quot;</span>);
       });
     } <span class="hljs-keyword">else</span> {
-      showErrorResult(<span class="hljs-string">&quot;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30A8;&#x30E9;&#x30FC;&#x3067;&#x3059;&#x3002;&quot;</span>);
++     showErrorResult(<span class="hljs-string">&quot;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30A8;&#x30E9;&#x30FC;&#x3067;&#x3059;&#x3002;&quot;</span>);
     }
   }).catch(error =&gt; {
-    showErrorResult(<span class="hljs-string">&quot;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x30A8;&#x30E9;&#x30FC;&#x3067;&#x3059;&#x3002;&quot;</span>);
++   showErrorResult(<span class="hljs-string">&quot;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x30A8;&#x30E9;&#x30FC;&#x3067;&#x3059;&#x3002;&quot;</span>);
   });
 };
 
@@ -416,7 +421,7 @@ fetch(<span class="hljs-string">`https://www.googleapis.com/books/v1/volumes?q=i
   <span class="hljs-keyword">return</span> button;
 };
 </code></pre>
-<p>&#x66F8;&#x7C4D;&#x304C;&#x898B;&#x3064;&#x304B;&#x3063;&#x305F;&#x969B;&#x306F;<code>showSuccessResult</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;, &#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x304B;&#x3063;&#x305F;, &#x30A8;&#x30E9;&#x30FC;&#x6642;&#x306F;<code>showErrorResult</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;.<br>&#x4EE5;&#x4E0B;&#x306B;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7D39;&#x4ECB;&#x3059;&#x308B;.</p>
+<p>&#x524D;&#x9805;(&#x66F8;&#x7C4D;&#x306E;&#x691C;&#x7D22;)&#x3067;&#x306F;searchBook&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5185;&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x305F;.<br>&#x3053;&#x3053;&#x3067;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x3067;&#x306F;&#x306A;&#x304F;, &#x753B;&#x9762;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x4FEE;&#x6B63;&#x3057;&#x3066;&#x3044;&#x308B;.<br>&#x66F8;&#x7C4D;&#x304C;&#x898B;&#x3064;&#x304B;&#x3063;&#x305F;&#x969B;&#x306F;<code>showSuccessResult</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;, &#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x304B;&#x3063;&#x305F;, &#x30A8;&#x30E9;&#x30FC;&#x6642;&#x306F;<code>showErrorResult</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;.<br>&#x4EE5;&#x4E0B;&#x306B;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7D39;&#x4ECB;&#x3059;&#x308B;.</p>
 <table>
 <thead>
 <tr>
@@ -439,7 +444,7 @@ fetch(<span class="hljs-string">`https://www.googleapis.com/books/v1/volumes?q=i
 </tr>
 <tr>
 <td style="text-align:left">createTextNode</td>
-<td style="text-align:left"><code>Text</code>&#x30CE;&#x30FC;&#x30C9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;.</td>
+<td style="text-align:left">&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x30CE;&#x30FC;&#x30C9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;.</td>
 </tr>
 <tr>
 <td style="text-align:left">setAttribute</td>
@@ -469,15 +474,10 @@ fetch(<span class="hljs-string">`https://www.googleapis.com/books/v1/volumes?q=i
   result.appendChild(<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;div&quot;</span>)).appendChild(<span class="hljs-built_in">document</span>.createTextNode(description));
   result.appendChild(button);
 
-  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;add-book&quot;</span>).addEventListener(<span class="hljs-string">&quot;click&quot;</span>, () =&gt; addBook(book));
++ <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;add-book&quot;</span>).addEventListener(<span class="hljs-string">&quot;click&quot;</span>, () =&gt; addBook(book));
 };
 
 ...
-
-<span class="hljs-comment">// &#x30DC;&#x30BF;&#x30F3;&#x306E;&#x4F5C;&#x6210;</span>
-<span class="hljs-keyword">const</span> makeButton = (id, text) =&gt; {
-  ...
-};
 
 <span class="hljs-comment">// &#x672C;&#x68DA;&#x306E;&#x8868;&#x793A;</span>
 <span class="hljs-keyword">const</span> showBookshelf = () =&gt; {
@@ -577,7 +577,7 @@ fetch(<span class="hljs-string">`https://www.googleapis.com/books/v1/volumes?q=i
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4. 実践JavaScript","level":"1.6","depth":1,"next":{"title":"5. 発展的なトピック","level":"1.7","depth":1,"path":"assets/05_evolving_topic.md","ref":"./assets/05_evolving_topic.md","articles":[]},"previous":{"title":"3. JavaScriptの基礎知識","level":"1.5","depth":1,"path":"assets/03_js_basic_knowledge.md","ref":"./assets/03_js_basic_knowledge.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"assets/04_js_practice.md","mtime":"2019-07-05T08:00:55.426Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-05T08:01:49.650Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4. 実践JavaScript","level":"1.6","depth":1,"next":{"title":"5. 発展的なトピック","level":"1.7","depth":1,"path":"assets/05_evolving_topic.md","ref":"./assets/05_evolving_topic.md","articles":[]},"previous":{"title":"3. JavaScriptの基礎知識","level":"1.5","depth":1,"path":"assets/03_js_basic_knowledge.md","ref":"./assets/03_js_basic_knowledge.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"assets/04_js_practice.md","mtime":"2019-07-05T08:18:46.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-05T08:19:51.565Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -55,9 +55,11 @@ console.log("hello, world!");
 ```
 
 デベロッパーツールのConsoleタブを開く.  
-ブラウザがChromeの場合, WindowsはF12キーを押すことでデベロッパーツールが開く.  
-Macはoptionキー, commandキー, iキーを同時に押すことでデベロッパーツールが開く.  
-その他の場合, 右上のメニューからその他のツール->デベロッパーツールを選択する.
+下記にデベロッパーツールの開き方を説明する.(ブラウザがChromeの場合)
+
+- WindowsはF12キーを押すことでデベロッパーツールが開く.  
+- Macはoptionキー, commandキー, iキーを同時に押すことでデベロッパーツールが開く.  
+- その他の場合, 右上のメニューからその他のツール->デベロッパーツールを選択する.
 
 以下の画像の様に, コンソール内に`hello, world!`と表示されていれば, app.jsが読み込めている.
 
@@ -155,7 +157,8 @@ document.getElementById("search").addEventListener("click", searchBook);
 ## 検索結果の表示
 次に, 検索結果を表示する.  
 検索結果を表示するために, 前項(書籍の検索)で記述したsearchBookメソッドを修正する.  
-また, 書籍を本棚に追加するための追加ボタンを作成するためのメソッドも作成する.
+変更箇所には`+`を記述している.  
+また, 書籍を本棚に追加するボタンを作成するためのメソッドも作成する.  
 
 ```js
 ...
@@ -164,20 +167,20 @@ document.getElementById("search").addEventListener("click", searchBook);
 const searchBook = () => {
   const isbn = document.getElementById("isbn");
   if (isbn.value.length === 0) {
-    showErrorResult("入力してください。");
++   showErrorResult("入力してください。");
     return;
   }
   fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
     if(response.ok) {
       response.json().then(book => {
-        if ("items" in book)  showSuccessResult(book.items[0].volumeInfo);
-        else                  showErrorResult("該当する書籍が見つかりませんでした。");
++       if ("items" in book)  showSuccessResult(book.items[0].volumeInfo);
++       else                  showErrorResult("該当する書籍が見つかりませんでした。");
       });
     } else {
-      showErrorResult("サーバーエラーです。");
++     showErrorResult("サーバーエラーです。");
     }
   }).catch(error => {
-    showErrorResult("ネットワークエラーです。");
++   showErrorResult("ネットワークエラーです。");
   });
 };
 
@@ -216,6 +219,8 @@ const makeButton = (id, text) => {
 };
 ```
 
+前項(書籍の検索)ではsearchBookメソッド内のメッセージはコンソールに表示されるようになっていた.  
+ここではコンソールではなく, 画面に表示されるように修正している.  
 書籍が見つかった際は`showSuccessResult`メソッドを, 見つからなかった, エラー時は`showErrorResult`メソッドを使用する.  
 以下に使用しているメソッドを紹介する.
 
@@ -224,7 +229,7 @@ const makeButton = (id, text) => {
 |join|配列の全要素を順に連結した文字列を新たに作成し, それを返す.<br>引数には要素の区切り方を指定できる.|
 |appendChild|特定の親要素に引数で指定した子要素を追加する.|
 |createElement|引数に指定した要素を作成する.|
-|createTextNode|`Text`ノードを作成する.|
+|createTextNode|テキストノードを作成する.|
 |setAttribute|特定の要素に属性とその値を追加する.|
 |textContent|特定の要素のテキストおよびその子孫のテキストの内容を表す.|
 
@@ -253,15 +258,10 @@ const showSuccessResult = book => {
   result.appendChild(document.createElement("div")).appendChild(document.createTextNode(description));
   result.appendChild(button);
   
-  document.getElementById("add-book").addEventListener("click", () => addBook(book));
++ document.getElementById("add-book").addEventListener("click", () => addBook(book));
 };
 
 ...
-
-// ボタンの作成
-const makeButton = (id, text) => {
-  ...
-};
 
 // 本棚の表示
 const showBookshelf = () => {
