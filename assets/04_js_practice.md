@@ -157,7 +157,8 @@ document.getElementById("search").addEventListener("click", searchBook);
 ## 検索結果の表示
 次に, 検索結果を表示する.  
 検索結果を表示するために, 前項(書籍の検索)で記述したsearchBookメソッドを修正する.  
-また, 書籍を本棚に追加するための追加ボタンを作成するためのメソッドも作成する.
+変更箇所には`+`を記述している.  
+また, 書籍を本棚に追加するボタンを作成するためのメソッドも作成する.  
 
 ```js
 ...
@@ -166,20 +167,20 @@ document.getElementById("search").addEventListener("click", searchBook);
 const searchBook = () => {
   const isbn = document.getElementById("isbn");
   if (isbn.value.length === 0) {
-    showErrorResult("入力してください。");
++   showErrorResult("入力してください。");
     return;
   }
   fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
     if(response.ok) {
       response.json().then(book => {
-        if ("items" in book)  showSuccessResult(book.items[0].volumeInfo);
-        else                  showErrorResult("該当する書籍が見つかりませんでした。");
++       if ("items" in book)  showSuccessResult(book.items[0].volumeInfo);
++       else                  showErrorResult("該当する書籍が見つかりませんでした。");
       });
     } else {
-      showErrorResult("サーバーエラーです。");
++     showErrorResult("サーバーエラーです。");
     }
   }).catch(error => {
-    showErrorResult("ネットワークエラーです。");
++   showErrorResult("ネットワークエラーです。");
   });
 };
 
@@ -257,7 +258,7 @@ const showSuccessResult = book => {
   result.appendChild(document.createElement("div")).appendChild(document.createTextNode(description));
   result.appendChild(button);
   
-  document.getElementById("add-book").addEventListener("click", () => addBook(book));
++ document.getElementById("add-book").addEventListener("click", () => addBook(book));
 };
 
 ...
