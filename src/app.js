@@ -3,6 +3,10 @@ const books = [];
 // 書籍の検索
 const searchBook = () => {
   const isbn = document.getElementById("isbn");
+  if (isbn.value.length === 0) {
+    showErrorResult("入力してください。");
+    return;
+  }
   fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn.value}`).then(response => {
     if(response.ok) {
       response.json().then(book => {
