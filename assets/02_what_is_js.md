@@ -1,22 +1,67 @@
 # JavaScriptとは
-JavaScriptはWebブラウザをはじめとした環境で動作する言語で, サーバサイドとのデータのやり取りや画面への描画, アニメーションなどに使われている.
+JavaScriptはWebブラウザ上で動作する言語で, 主にサーバとのデータのやり取りや画面への描画, アニメーションなどを行うために使用される.
 
 JavaScriptは,
-
 - プロトタイプベースのオブジェクト指向言語
 - インタプリタ型言語
 - 動的型付け言語
 
 といった特徴を持つ.
 
+マルチパラダイム
+
 // TODO: それぞれの特徴の解説
 
 # JavaScriptの歴史
-NCSA Mosaic
-Netscape Navigator 2.0 -> LiveScript
-IE 3 -> JScript
-Flash -> ActionScript
-ECMAScript
+JavaScriptは1995年にネットスケープ・コミュニケーションズの**ブレンダン・アイク**によって開発され, **Netscape Navigator 2.0**に実装された.  
+開発当初は**LiveScript**と呼ばれていたが, 当時サン・マイクロシステムズが開発したJavaが大きな注目を浴びており, 業務提携をしていたこともあったためJavaScriptに改名された.  
+JavaScriptができた当初, Webで使用される言語にはCやJavaがあった.  
+CGIで大抵のことはできていた.
+
+1996年, MicrosoftがInternet Explorer 3にJavaScriptを実装しようとしたが, ネットスケープ・コミュニケーションズからライセンスを貰うことができず, JavaScriptと似た言語として**JScript**を実装する.  
+ただし, JScriptはJavaScriptと互換性がないため, Netscape NavigatorとInternet Explorerで同じコードを動作させることができないという状態に陥る.  
+ちなみにこの両者の争いを**ブラウザ戦争**と呼ぶ.  
+また, 1996年には**Flash**が発表され, 当時流行していたJavaアプレットよりも軽くJavaアプレットでできることの殆どをカバーしていたことから大流行する.
+
+1997年になると, JavaScriptとJScriptの互換性が無い状況を打開しようという動きが出始める.  
+ネットスケープ・コミュニケーションズは標準化を画策し, Ecma Internationalという標準化団体に標準化の依頼をした(詳細は後述).
+
+また, 1997年頃に**ダイナミックHTML**(**DHTML**)と呼ばれる, JavaScriptとCSSを駆使してWebページを書き換える考え方が生まれた.  
+今となっては当たり前のことである.
+
+DOM(Document Object Model)はHTMLの内容をJavaScriptから？解釈するための規格.  
+W3Cにより策定.  
+DOM Level 1は1998年に策定, DOM Level 2(CSS/CSS2を操作できる)は2000年に策定されている.
+
+2000年代前半になると, 徐々にJavaScriptが普及してきていたが, 無駄にアニメーションをするサイトが目立ったことやセキュリティ上の問題が発生したことから, WebブラウザのJavaScriptの機能をオフにするユーザが続出した.  
+また, ECMAScriptを参考にした**ActionScript**がFlashに組み込まれ, Flashは以前にも増して流行した.
+
+これまでは軽視されていたJavaScriptであったが, 2000年代後半にGoogleがJavaScriptの**Ajax**(後述)を用いてGoogle Mapsを開発したことから, JavaScriptへの評価が見直され始める.  
+それに伴い, フロントエンドが大規模化・複雑化していき, JavaScriptをそのまま記述するのが大変になったことから, ライブラリというものが生まれる.  
+2005年にはprototype.js, 2010年にはjQueryが生まれ, 両者ともに大活躍した(後述).  
+2008年にはGoogle ChromeがV8と呼ばれるJavaScriptエンジンを実装し, それまでのJavaScriptの実行速度が遅いという常識を覆した(後述).
+
+# ECMAScript
+**ECMAScript**はJavaScriptの仕様である.  
+**Ecma International**という標準化団体によって仕様が策定されている.  
+
+|エディション|公開日|備考|
+|:--|:--|:--|
+|1|1997年6月||
+|2|1998年6月||
+|3|1999年12月||
+|4|放棄|意見が対立し, 打ち切りとなった.|
+|5|2009年12月||
+|5.1|2011年6月||
+|6(2015)|2015年6月|機能が大幅にアップデートされる. これ以降は毎年仕様が策定されることとなった.|
+|2016|2016年6月||
+|2017|2017年6月||
+|2018|||
+
+// living standard
+// 策定プロセス
+// github
+// JavaScript > ECMAScript
 
 # 仕様策定のプロセス
 
@@ -26,12 +71,28 @@ Node.jsはサーバサイドをはじめとした環境で動作するJavaScript
 サーバサイドのJavaScriptとしてはじまったNode.jsだが, 現在はNode.js製のクライアント用のライブラリが多く作られている.  
 これらのライブラリはnpm(Node Package Manager)と呼ばれるパッケージ管理システム上で公開され(誰でも公開できる), CUI上からnpmコマンドを使ってインストールすることができる.
 
+// bower
+
 また, Node.jsは
 - V8エンジンで動作する
 - ノンブロッキングI/O 非同期I/O?
 などの特徴を持ち, サーバサイドを記述するためのフレームワークとしてExpressも用意されている.
 
-// TODO: RequireJS, AMD, ServerJS, V8
+// TODO: RequireJS, AMD, ServerJS, V8, io.js
+
+# ビルドツール
+// browserify
+// webpack
+
+# タスクランナー
+// Gulp
+// Grunt
+// guard
+
+# 難読化
+ugilify
+
+# ミニファイ
 
 # altJS
 **altJS**とは, alternative JavaScriptの略称で, JavaScriptの代替言語の総称である.  
@@ -45,7 +106,7 @@ altJSには以下のような種類がある(抜粋).
 |言語名|特徴|
 |:--|:--|
 |**CoffeeScript**|Rubyライクな記法で記述でき, 簡潔さが特徴的.<br>Ruby on Railsでも公式サポートされた.<br>JavaScriptに無かった先進的な機能も盛り込まれていたが, ES6の登場によりJavaScriptとそこまで差異が無くなったため滅びてしまった.|
-|**Dart**|Googleが開発し, 推進していたが結局はあまり流行せず廃れてしまった.<br>しかし近年, Flutterで採用されたこともあり, プラットフォームは違えど人気を盛り返している.|
+|**Dart**|Googleが開発し, 推進していたが結局はあまり流行せず廃れてしまった.<br>記法はGo言語ライク.<br>しかし近年, Flutterで採用されたこともあり, プラットフォームは違えど人気を盛り返している.|
 |**JSX**|DeNAが開発した言語.<br>Reactなどで採用されている.|
 |**TypeScript**|Microsoftが開発した言語で, 静的型付けが特徴的である.<br>業界的に推進されており, 今のところaltJSの中で一番ホットである.<br>|
 |**Elm**|純粋関数型言語で強い静的型付けが特徴的な言語である.<br>コンパイルに成功すれば一切実行時エラーが出ないという強みがあり, 現在人気が急上昇している.|
@@ -59,11 +120,15 @@ Ajaxは画面を遷移することなくデータをやり取りし, 描画す�
 当初は, Ajaxでやりとりするデータ構造にXMLが用いられることが多かったが, 現在ではJSONを使ってやり取りされることが多くなっている.
 これらの技術については, 第n章 非同期通信 にて詳しく解説する.
 
+Ajax ... 設計方法？
+XMLHttpRequest ... 1995年にIE5でActiveXとして実装されていたもの
+
 // JSONについて
 
 # ライブラリ
 初期のJavaScriptはフォームの内容の加工やアニメーションを付けたりするような小規模なものにしか使われなかったが, Ajaxの登場によりJavaScriptの需要は高まり, だんだんと大規模化していった.  
 2005年にprototype.js, 2010年にjQueryが登場し, 両者ともに人気を博した.  
+// TODO: prototype汚染  
 jQueryの使用頻度も年々減ってはいるが, 未だに使われることがある.
 また, jQueryはセレクタによる要素の絞り込みができる機能を備えており, それが便利だということでJavaScriptにも`querySelector`, `querySelectorAll`として実装されるなど, JavaScript自体にも影響を与えている.  
 また, ユーティリティライブラリのlodashや日付ライブラリのmoment.jsなど, JavaScriptの標準関数の弱点を補うようなライブラリも多数公開されている.
@@ -71,4 +136,35 @@ jQueryの使用頻度も年々減ってはいるが, 未だに使われること
 # Webフレームワーク
 JavaScriptが見直され, ライブラリが興隆したが, ライブラリだけでは大規模化・複雑化に耐えうるような堅牢なシステムの構築が困難になった.  
 そこでWebサービスの雛形ごと提供するWebフレームワークが登場した.
-Backbone.jsやAngularJSからはじまり, 現在ではVue.js, React, Angularといった３つのWebフレームワークがよく使われている.
+Backbone.jsやAngularJSからはじまり, 現在ではVue.js, React, Angularといった３つのWebフレームワークがよく使われている.  
+// Riot.js, aurelia, Marionette.js
+// MVC, コンポーネント指向
+
+# V8
+// TODO
+
+# WebAssembly
+asm.jsはJavaScriptを特殊な書き方をすることでブラウザが高速に動作するasm.jsとして動作する.  
+2013年に誕生.  
+現在は後述のWebAssemblyが主流である.
+
+WebAssembly(wasm)はWebブラウザ上で動作するアセンブリ言語のようなもの.  
+2017年にリリース.  
+Cをはじめとする様々な言語からEmscriptenなどのツールを使用することでコンパイルできる.
+
+# WebComponents
+Polymer
+polyfill
+
+# Shady DOM
+
+# HTML import
+
+# 仮想DOM
+
+# SPA/PWA/SSR
+
+# JavaScript AST
+SpiderMonkey, KJS, V8, Chakra, Rhino
+
+# ESLint
