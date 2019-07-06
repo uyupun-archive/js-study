@@ -8,11 +8,15 @@ JavaScriptは,
 
 といった特徴を持つ.
 
+マルチパラダイム
+
 // TODO: それぞれの特徴の解説
 
 # JavaScriptの歴史
 JavaScriptは1995年にネットスケープ・コミュニケーションズの**ブレンダン・アイク**によって開発され, **Netscape Navigator 2.0**に実装された.  
-開発当初は**LiveScript**と呼ばれていたが, 当時サン・マイクロシステムズが開発したJavaが大きな注目を浴びており, 業務提携をしていたこともあったためJavaScriptに改名された.
+開発当初は**LiveScript**と呼ばれていたが, 当時サン・マイクロシステムズが開発したJavaが大きな注目を浴びており, 業務提携をしていたこともあったためJavaScriptに改名された.  
+JavaScriptができた当初, Webで使用される言語にはCやJavaがあった.  
+CGIで大抵のことはできていた.
 
 1996年, MicrosoftがInternet Explorer 3にJavaScriptを実装しようとしたが, ネットスケープ・コミュニケーションズからライセンスを貰うことができず, JavaScriptと似た言語として**JScript**を実装する.  
 ただし, JScriptはJavaScriptと互換性がないため, Netscape NavigatorとInternet Explorerで同じコードを動作させることができないという状態に陥る.  
@@ -74,7 +78,7 @@ Node.jsはサーバサイドをはじめとした環境で動作するJavaScript
 - ノンブロッキングI/O 非同期I/O?
 などの特徴を持ち, サーバサイドを記述するためのフレームワークとしてExpressも用意されている.
 
-// TODO: RequireJS, AMD, ServerJS, V8
+// TODO: RequireJS, AMD, ServerJS, V8, io.js
 
 # ビルドツール
 // browserify
@@ -124,6 +128,7 @@ XMLHttpRequest ... 1995年にIE5でActiveXとして実装されていたもの
 # ライブラリ
 初期のJavaScriptはフォームの内容の加工やアニメーションを付けたりするような小規模なものにしか使われなかったが, Ajaxの登場によりJavaScriptの需要は高まり, だんだんと大規模化していった.  
 2005年にprototype.js, 2010年にjQueryが登場し, 両者ともに人気を博した.  
+// TODO: prototype汚染  
 jQueryの使用頻度も年々減ってはいるが, 未だに使われることがある.
 また, jQueryはセレクタによる要素の絞り込みができる機能を備えており, それが便利だということでJavaScriptにも`querySelector`, `querySelectorAll`として実装されるなど, JavaScript自体にも影響を与えている.  
 また, ユーティリティライブラリのlodashや日付ライブラリのmoment.jsなど, JavaScriptの標準関数の弱点を補うようなライブラリも多数公開されている.
@@ -132,7 +137,8 @@ jQueryの使用頻度も年々減ってはいるが, 未だに使われること
 JavaScriptが見直され, ライブラリが興隆したが, ライブラリだけでは大規模化・複雑化に耐えうるような堅牢なシステムの構築が困難になった.  
 そこでWebサービスの雛形ごと提供するWebフレームワークが登場した.
 Backbone.jsやAngularJSからはじまり, 現在ではVue.js, React, Angularといった３つのWebフレームワークがよく使われている.  
-// Riot.js, aurelia
+// Riot.js, aurelia, Marionette.js
+// MVC, コンポーネント指向
 
 # V8
 // TODO
@@ -146,10 +152,13 @@ WebAssembly(wasm)はWebブラウザ上で動作するアセンブリ言語のよ
 2017年にリリース.  
 Cをはじめとする様々な言語からEmscriptenなどのツールを使用することでコンパイルできる.
 
-# WebComponent
+# WebComponents
+Polymer
 polyfill
 
-# ShadowDOM
+# Shady DOM
+
+# HTML import
 
 # 仮想DOM
 
