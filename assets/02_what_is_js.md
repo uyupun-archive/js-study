@@ -1,8 +1,7 @@
 # JavaScriptとは
-JavaScriptはWebブラウザをはじめとした環境で動作する言語で, サーバサイドとのデータのやり取りや画面への描画, アニメーションなどに使われている.
+JavaScriptはWebブラウザ上で動作する言語で, 主にサーバとのデータのやり取りや画面への描画, アニメーションなどを行うために使用される.
 
 JavaScriptは,
-
 - プロトタイプベースのオブジェクト指向言語
 - インタプリタ型言語
 - 動的型付け言語
@@ -12,11 +11,44 @@ JavaScriptは,
 // TODO: それぞれの特徴の解説
 
 # JavaScriptの歴史
-NCSA Mosaic
-Netscape Navigator 2.0 -> LiveScript
-IE 3 -> JScript
-Flash -> ActionScript
-ECMAScript
+JavaScriptは1995年にネットスケープ・コミュニケーションズの**ブレンダン・アイク**によって開発され, **Netscape Navigator 2.0**に実装された.  
+開発当初は**LiveScript**と呼ばれていたが, 当時サン・マイクロシステムズが開発したJavaが大きな注目を浴びており, 業務提携をしていたこともあったためJavaScriptに改名された.
+
+1996年, MicrosoftがInternet Explorer 3にJavaScriptを実装しようとしたが, ネットスケープ・コミュニケーションズからライセンスを貰うことができず, JavaScriptと似た言語として**JScript**を実装する.  
+ただし, JScriptはJavaScriptと互換性がないため, Netscape NavigatorとInternet Explorerで同じコードを動作させることができないという状態に陥る.
+また, 1996年には**Flash**が発表され, 当時流行していたJavaアプレットよりも軽くJavaアプレットでできることの殆どをカバーしていたことから大流行する.
+
+1997年になると, JavaScriptとJScriptの互換性が無い状況を打開しようという動きが出始める.  
+ネットスケープ・コミュニケーションズは標準化を画策し, Ecma Internationalという標準化団体に標準化の依頼をした(詳細は後述).
+
+2000年代前半になると, 徐々にJavaScriptが普及してきていたが, 無駄にアニメーションをするサイトが目立ったことやセキュリティ上の問題が発生したことから, WebブラウザのJavaScriptの機能をオフにするユーザが続出した.  
+また, ECMAScriptを参考にした**ActionScript**がFlashに組み込まれ, Flashは以前にも増して流行した.
+
+これまでは軽視されていたJavaScriptであったが, 2000年代後半にGoogleがJavaScriptの**Ajax**(後述)を用いてGoogle Mapsを開発したことから, JavaScriptへの評価が見直され始める.  
+それに伴い, フロントエンドが大規模化・複雑化していき, JavaScriptをそのまま記述するのが大変になったことから, ライブラリというものが生まれる.  
+2005年にはprototype.js, 2010年にはjQueryが生まれ, 両者ともに大活躍した(後述).  
+2008年にはGoogle ChromeがV8と呼ばれるJavaScriptエンジンを実装し, それまでのJavaScriptの実行速度が遅いという常識を覆した(後述).
+
+# ECMAScript
+**ECMAScript**はJavaScriptの仕様である.  
+**Ecma International**という標準化団体によって仕様が策定されている.  
+
+|エディション|公開日|備考|
+|:--|:--|:--|
+|1|1997年6月||
+|2|1998年6月||
+|3|1999年12月||
+|4|放棄|意見が対立し, 打ち切りとなった.|
+|5|2009年12月||
+|5.1|2011年6月||
+|6(2015)|2015年6月|機能が大幅にアップデートされる. これ以降は毎年仕様が策定されることとなった.|
+|2016|2016年6月||
+|2017|2017年6月||
+|2018|||
+
+// living standard
+// 策定プロセス
+// github
 
 # 仕様策定のプロセス
 
@@ -71,4 +103,8 @@ jQueryの使用頻度も年々減ってはいるが, 未だに使われること
 # Webフレームワーク
 JavaScriptが見直され, ライブラリが興隆したが, ライブラリだけでは大規模化・複雑化に耐えうるような堅牢なシステムの構築が困難になった.  
 そこでWebサービスの雛形ごと提供するWebフレームワークが登場した.
-Backbone.jsやAngularJSからはじまり, 現在ではVue.js, React, Angularといった３つのWebフレームワークがよく使われている.
+Backbone.jsやAngularJSからはじまり, 現在ではVue.js, React, Angularといった３つのWebフレームワークがよく使われている.  
+// Riot.js
+
+# V8
+// TODO
